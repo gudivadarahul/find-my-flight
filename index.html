@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find my Flight</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="bg-primary py-3">
+      <nav class="container d-flex justify-content-between align-items-center">
+        <a href="#" class="navbar-brand text-white">Find my Flight</a>
+      </nav>
+    </header>
+
+    <main class="container my-5">
+      <h1 class="text-center my-4">Track your Flight</h1>
+      <form id="flight-form" class="card p-4 shadow">
+        <div class="mb-3">
+          <label for="airline" class="form-label">Airline:</label>
+          <div class="airline-input">
+            <input
+              type="text"
+              id="airline"
+              class="form-control"
+              name="airline"
+              placeholder="Enter airline"
+              aria-label="Airline"
+              aria-describedby="airline-list"
+              onkeyup="filterAirlines()"
+              required
+            />
+            <ul id="airlineList" class="list-group"></ul>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="flight-number" class="form-label">Flight Number:</label>
+          <div class="flight-number-input">
+            <input
+              type="text"
+              id="flight-number"
+              class="form-control"
+              name="flight-number"
+              placeholder="Enter flight number"
+              aria-label="Flight Number"
+              aria-describedby="flight-number-list"
+              required
+            />
+            <ul id="flightNumberList" class="list-group" role="listbox"></ul>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="departure-date" class="form-label">Departure Date:</label>
+          <input
+            type="date"
+            id="departure-date"
+            class="form-control"
+            name="departure-date"
+            aria-label="Departure Date"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Find Flight</button>
+      </form>
+
+      <div id="flight-status" class="mt-4 card p-4 shadow"></div>
+    </main>
+
+    <footer class="bg-dark text-white py-3">
+      <div class="container text-center">
+        <p>&copy; 2024 Find my Flight. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
