@@ -7,7 +7,7 @@ let airlines = [];
 async function fetchAirlines() {
   const accessToken = await getAccessToken();
   const response = await fetch(
-    "https://test.api.amadeus.com/v1/reference-data/airlines",
+    "https://api.amadeus.com/v1/reference-data/airlines",
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -97,14 +97,9 @@ flightForm.addEventListener("submit", async function (event) {
   // Get the access token
   const accessToken = await getAccessToken();
 
-  // Log the full URL in the console
-  console.log(
-    `https://test.api.amadeus.com/v2/schedule/flights?carrierCode=${airline}&flightNumber=${flightNumber}&scheduledDepartureDate=${departureDate}`
-  );
-
   // Make an API request to retrieve flight status
   fetch(
-    `https://test.api.amadeus.com/v2/schedule/flights?carrierCode=${airline}&flightNumber=${flightNumber}&scheduledDepartureDate=${departureDate}`,
+    `https://api.amadeus.com/v2/schedule/flights?carrierCode=${airline}&flightNumber=${flightNumber}&scheduledDepartureDate=${departureDate}`,
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -161,17 +156,19 @@ function formatDateTime(dateTimeString) {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    timeZoneName: "short",
   };
   return dateTime.toLocaleString("en-US", options);
 }
 
 // Function to get access token
 async function getAccessToken() {
-  const apiKey = "OZNAgSasYNyAOJ1k15dN1A7pi4WGvaVF";
-  const apiSecret = "IEkyo8K1lg4sxFAX";
+  const apiKey = "7nrCxveITNNGPGGQVKmoj3HagcITDk1n";
+  const apiSecret = "cGXeh6cAy6Ler2FY";
 
   const response = await fetch(
-    "https://test.api.amadeus.com/v1/security/oauth2/token",
+    "https://api.amadeus.com/v1/security/oauth2/token",
     {
       method: "POST",
       headers: {
